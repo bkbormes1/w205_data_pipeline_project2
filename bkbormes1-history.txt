@@ -1,0 +1,15 @@
+    1  cd w205/project-2-bkbormes1
+    2  curl -L -o assessment-attempts-20180128-121051-nested.json https://goo.gl/ME6hjp`
+    3  curl -L -o assessment-attempts-20180128-121051-nested.json https://goo.gl/ME6hjp
+    4  docker-compose ps
+    5  docker-compose up -d
+    6  docker-compose logs -f kafka
+    7  docker-compose exec cloudera hadoop fs -ls /tmp/
+    8  docker-compose exec kafka   kafka-topics     --create     --topic exams     --partitions 1     --replication-factor 1     --if-not-exists     --zookeeper zookeeper:32181
+    9  docker-compose exec mids   bash -c "cat /w205/project-2-bkbormes1/assessment-attempts-20180128-121051-nested.json \
+    | jq '.[]' -c \
+    | kafkacat -P -b kafka:29092 -t exams"
+   10  docker-compose exec spark pyspark
+   11  docker-compose exec spark cat /root/.python_history
+   12  docker-compose down
+   13  history > bkbormes1-history.txt
